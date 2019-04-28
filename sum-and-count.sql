@@ -1,0 +1,1 @@
+-- > 1 Show the total population of the world. world(name, continent, area, population, gdp)
