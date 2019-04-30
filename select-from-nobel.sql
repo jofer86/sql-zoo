@@ -86,9 +86,9 @@ WHERE winner = 'PETER GRÜNBERG';
 
 --> 12 Find all details of the prize won by EUGENE O'NEILL
 
-SELECT yr, subject, winner
-FROM nobel
-WHERE winner = 'EUGENE O\'NEILL'';
+SELECT *
+FROM nobel 
+WHERE winner in ('Eugene O''Neill')
 
 --- > 13 List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
 

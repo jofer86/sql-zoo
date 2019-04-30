@@ -42,12 +42,13 @@ FROM world
 WHERE name
 LIKE '%A%A%A%'
 
--- > 8 ndia and Angola have an n as the second character. You can use the underscore as a single character wildcard.
+-- > 8 India and Angola have an n as the second character. You can use the underscore as a single character wildcard.
 
--- SELECT name FROM world
---  WHERE name LIKE '_n%'
--- ORDER BY name
--- Find the countries that have "t" as the second character
+SELECT name FROM world
+WHERE name LIKE '_n%'
+ORDER BY name
+ 
+ -- > Find the countries that have "t" as the second character
 
 SELECT name
 FROM world
@@ -75,3 +76,27 @@ SELECT name
 FROM world
 WHERE name LIKE capital
 
+-- > 12 The capital of Mexico is Mexico City. Show all the countries where the capital has the country together with the word "City". Find the country where the capital is the country plus "City".
+
+SELECT name
+FROM world
+WHERE capital LIKE '%city' 
+
+-- > 13 Find the capital and the name where the capital includes the name of the country.
+
+SELECT capital, name
+FROM world
+WHERE capital LIKE concat('%', name, '%');
+
+-- > 14 Find the capital and the name where the capital is an extension of name of the country. You should include Mexico City as it is longer than Mexico. You should not include Luxembourg as the capital is the same as the country.
+
+SELECT capital, name
+FROM world
+WHERE capital LIKE concat(name, '%') 
+AND capital <> name;
+
+-- > 15 For Monaco-Ville the name is Monaco and the extension is -Ville. Show the name and the extension where the capital is an extension of name of the country.
+
+SELECT name, REPLACE(capital, name, '') AS ext
+FROM world 
+WHERE capital LIKE CONCAT(name, '_%');
